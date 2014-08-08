@@ -1,6 +1,5 @@
 .c9
 .git
-
 assets/*
 !assets/.gitignore
 protected/runtime/*
