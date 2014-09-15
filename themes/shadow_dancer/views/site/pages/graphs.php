@@ -1,7 +1,7 @@
 <?php
 $baseUrl = Yii::app()->theme->baseUrl; 
 $cs = Yii::app()->getClientScript();
-$cs->registerScriptFile('http://www.google.com/jsapi');
+$cs->registerScriptFile('https://www.google.com/jsapi');
 $cs->registerCoreScript('jquery');
 $cs->registerScriptFile($baseUrl.'/js/jquery.gvChart-1.0.1.min.js');
 $cs->registerScriptFile($baseUrl.'/js/pbs.init.js');

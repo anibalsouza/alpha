@@ -8,7 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	
-	//'defaultController' => 'login',
+	'defaultController' => 'site/login',
 	
 	'name'=>'Alpha Run!',
 	'theme'=>'shadow_dancer',
@@ -26,9 +26,9 @@ return array(
 		
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
-			'password'=>'Enter Your Password Here',
+			'password'=>'Enter Your Password H',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
-			'ipFilters'=>array('127.0.0.1','::1'),
+			'ipFilters'=>array('*.*.*.*','::1'),
 		),
 		
 	),
@@ -40,7 +40,39 @@ return array(
 			'allowAutoLogin'=>true,
 		),
 		
-		
+		  'widgetFactory'=>array(
+            'widgets'=>array(
+                'CGridView'=>array(
+                    'htmlOptions'=>array('cellspacing'=>'0','cellpadding'=>'0'),
+					'itemsCssClass'=>'item-class',
+					'pagerCssClass'=>'pager-class'
+                ),
+                'CJuiTabs'=>array(
+                    'htmlOptions'=>array('class'=>'shadowtabs'),
+                ),
+                'CJuiAccordion'=>array(
+                    'htmlOptions'=>array('class'=>'shadowaccordion'),
+                ),
+                'CJuiProgressBar'=>array(
+                   'htmlOptions'=>array('class'=>'shadowprogressbar'),
+                ),
+                'CJuiSlider'=>array(
+                    'htmlOptions'=>array('class'=>'shadowslider'),
+                ),
+                'CJuiSliderInput'=>array(
+                    'htmlOptions'=>array('class'=>'shadowslider'),
+                ),
+                'CJuiButton'=>array(
+                    'htmlOptions'=>array('class'=>'shadowbutton'),
+                ),
+                'CJuiButton'=>array(
+                    'htmlOptions'=>array('class'=>'shadowbutton'),
+                ),
+                'CJuiButton'=>array(
+                    'htmlOptions'=>array('class'=>'button green'),
+                ),
+            ),
+        ),
 		
 		
 		// uncomment the following to enable URLs in path-format

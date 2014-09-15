@@ -1898,6 +1898,7 @@ abstract class CActiveRecord extends CModel
 		return $records;
 	}
 
+	// ##################################################################################### 
 	/**
 	 * Creates an active record instance.
 	 * This method is called by {@link populateRecord} and {@link populateRecords}.
@@ -1908,13 +1909,44 @@ abstract class CActiveRecord extends CModel
 	 * @param array $attributes list of attribute values for the active records.
 	 * @return static the active record
 	 */
+	
+	
 	protected function instantiate($attributes)
 	{
 		$class=get_class($this);
 		$model=new $class(null);
 		return $model;
 	}
-
+	
+/*	protected function instantiate($attributes)
+    {
+        if (!isset($attributes['id'])) { // When creating and $type_id has not defined yet
+            return parent::instantiate($attributes);
+        }
+        $classRecord = Papel::model()->findByPk($attributes['id']); // Load the "Type" class
+        if($classRecord === null)
+            throw new CException('Type not found');
+        $className = $classRecord->nome; // Let's assume that name is the field storing the name of the class
+        $model = new $className(null); // Null param needed for populating the record
+        return $model;
+    }
+	
+	
+	
+	
+	
+	
+	// #####################################################################################
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * Returns whether there is an element at the specified offset.
 	 * This method is required by the interface ArrayAccess.

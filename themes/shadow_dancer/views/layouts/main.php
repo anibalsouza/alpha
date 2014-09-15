@@ -64,6 +64,10 @@
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'Dashboard', 'url'=>array('/site/index')),
+				array('label'=>'Usuarios', 'url'=>array('/usuario', ''=>'')),
+				array('label'=>'Alunos', 'url'=>array('/aluno', ''=>'')),
+							array('label'=>'Equipes', 'url'=>array('/equipe', ''=>'')),
+	array('label'=>'Professores', 'url'=>array('/professor', ''=>'')),
 				array('label'=>'Graphs', 'url'=>array('/site/page', 'view'=>'graphs'),'itemOptions'=>array('class'=>'icon_chart')),
 				array('label'=>'Form', 'url'=>array('/site/page', 'view'=>'forms')),
 				array('label'=>'Interface', 'url'=>array('/site/page', 'view'=>'interface')),				
@@ -83,10 +87,4 @@
 	<div id="footer">
 		Copyright &copy; <?php echo date('Y'); ?> by webapplicationthemes.com<br/>
 		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
-	</div><!-- footer -->
-
-</div><!-- page -->
-
-</body>
-</html>
+		<?
