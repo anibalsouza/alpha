@@ -1,0 +1,16 @@
+Caso de Uso para testes e desenvolvimento.
+- Duas Equipes:
+    -Equipe A
+        -1 Professor Admin: - Armando Admilson
+        -2 Professor Associado: - Antonio Profeta e Aloizio Profeta
+        -3 Alunos: Andre Alonzo, Alex Alonzo e Anderson Alonzo
+        
+    -Equipe B
+        -1 Professor Admin: - Bernardo Admilson
+        -2 Professor Associado: - Baltazar Profeta e Benedito Profeta
+        -3 Alunos: Bruno Alonzo, Bia Alonzo e Beto Alonzo
+
+- Equipe A só vê Equipe A e Equipe B só ve Equipe B;
+- Professor Admin gerencia Professores e Alunos
+- Professor Associado gerencia Alunos
+    * gerenciar = criar edita e excluir

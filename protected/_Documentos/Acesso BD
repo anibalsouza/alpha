@@ -1,0 +1,46 @@
+My Databases
+Name		Current DB Size	Maximum DB Size		
+alphaDB		0.16 MB		20 MB			
+alphayDB	N/A		20 MB	
+
+##################################################################################################
+
+Cluster details for alphayDB
+
+--------------------------------------------------------------------------------------------------
+
+Cluster Gateway Information
+Hostname				Max Connections		Max Queries/Hour
+br-cdbr-azure-south-a.cloudapp.net	4			3600
+
+
+Cluster Nodes
+Type	Provider		Region			Name					Status
+Cloud	Windows Azure		Brazil South		br-mm-azure-south-01-a			Online
+Cloud	Windows Azure		Brazil South		br-mm-azure-south-01-b			Online
+Cloud	Amazon Web Services	South America (Brazil)	br-mm-azure-south-01-c.cleardb.net	Online
+
+Access Credentials
+Username:	bbc3af3243c6e0
+Password:	4fb8cadb
+
+###################################################################################################
+
+Cluster details for alphaDB
+
+--------------------------------------------------------------------------------------------------
+
+Cluster Gateway Information
+Hostname				Max Connections		Max Queries/Hour
+us-cdbr-azure-east-a.cloudapp.net	4			3600
+
+
+Cluster Nodes
+Type	Provider	Region	Name	Status
+Cloud	Windows Azure	East US	us-mm-azure-east-01	Online
+Cloud	Windows Azure	West US	us-mm-azure-west-01	Online
+
+
+Access Credentials
+Username:	bd2c96a6e0c2bb
+Password:	19ac62f1
