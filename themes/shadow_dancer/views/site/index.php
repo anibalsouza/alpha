@@ -13,7 +13,7 @@
 if (!Yii::app()->user->isGuest) 
     $nome_conhecido = Usuario::model()->findByPk(Yii::app()->user->id)->nome_conhecido;
 else
-    Yii::app()->getRequest()->redirect('index.php/site/login'); 
+    Yii::app()->getRequest()->redirect('/site/login'); 
 ?>
 
 <h1>Dear <?php echo $nome_conhecido; ?> welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i> Dashboard</h1>
