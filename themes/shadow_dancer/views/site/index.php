@@ -9,10 +9,14 @@
 
 ?>
 
-<?php $this->pageTitle=Yii::app()->name; ?>
+<?php $this->pageTitle=Yii::app()->name;
+if (!Yii::app()->user->isGuest) 
+    $nome_conhecido = Usuario::model()->findByPk(Yii::app()->user->id)->nome_conhecido;
+else
+    Yii::app()->getRequest()->redirect('index.php/site/login'); 
+?>
 
-
-<h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i> Dashboard</h1>
+<h1>Dear <?php echo $nome_conhecido; ?> welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i> Dashboard</h1>
 <div class="flash-error">This is an example of an error message to show you that things have gone wrong.</div>
 <div class="flash-notice">This is an example of a notice message.</div>
 <div class="flash-success">This is an example of a success message to show you that things have gone according to plan.</div>
@@ -68,8 +72,8 @@
         <div class="dashIconText"><a href="#">System Alerts</a></div>
     </div>
    
-    
 </div><!-- END OF .dashIcons -->
+
 <div class="span-7 last">
 
             Domains Used: 45/100

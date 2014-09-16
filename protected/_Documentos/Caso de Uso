@@ -10,7 +10,8 @@ Caso de Uso para testes e desenvolvimento.
         -2 Professor Associado: - Baltazar Profeta e Benedito Profeta
         -3 Alunos: Bruno Alonzo, Bia Alonzo e Beto Alonzo
 
-- Equipe A só vê Equipe A e Equipe B só ve Equipe B;
+- Equipe A só vê Equipe A e Equipe B só vê Equipe B;
 - Professor Admin gerencia Professores e Alunos
 - Professor Associado gerencia Alunos
-    * gerenciar = criar edita e excluir
+    * gerenciar =ver criar edita e excluir
+- Aluno vê alunos e professores

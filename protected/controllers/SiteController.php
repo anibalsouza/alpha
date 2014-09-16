@@ -5,6 +5,20 @@ class SiteController extends Controller
 	/**
 	 * Declares class-based actions.
 	 */
+	 
+	 	public function accessRules()
+	{
+		return array(
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index'),
+				'users'=>array('@'), 
+			),
+			array('deny',  // deny all users
+				'users'=>array('*'),
+			),
+		);
+	}
+	
 	public function actions()
 	{
 		return array(
@@ -94,7 +108,7 @@ class SiteController extends Controller
 
 			if($model->validate() && $model->login())
 			{
-				$this->redirect(array('view','id'=>Usuario::model()->id));
+ 				$this->redirect(array('view','id'=>Usuario::model()->id));
 //				$this->redirect(Yii::app()->user->returnUrl);
 //				$this->redirect(Yii::app()->homeUrl); 
 			}	

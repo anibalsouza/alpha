@@ -16,7 +16,6 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/buttons.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/icons.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/tables.css" />
-    
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/mbmenu.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/mbmenu_iestyles.css" />
 	
@@ -26,9 +25,10 @@
 
 <body>
 
-<div class="container" id="page">
+<div class="container" id="page"> 
 	<div id="topnav">
-		<div class="topnav_text"><a href='#'>Home</a> | <a href='#'>My Account</a> | <a href='#'>Settings</a> | <a href='#'>Logout</a> </div>
+	
+		<div class="topnav_text"><a href='#'>Home</a> | <a href='#'>My Account</a> | <a href='#'>Settings</a> | <a href='<?php echo Yii::app()->request->baseUrl;?>/index.php/site/logout'>Logout</a> </div>
 	</div>
 	<div id="header">
 		<div id="logo"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/logo.png"></img><?php //echo CHtml::encode(Yii::app()->name); ?></div>
@@ -61,20 +61,24 @@
     )); */?> --->
 	<div id="mainmenu">
     
-		<?php $this->widget('zii.widgets.CMenu',array(
+		<?php 
+		if (!Yii::app()->user->isGuest){
+			$this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'Dashboard', 'url'=>array('/site/index')),
-				array('label'=>'Usuarios', 'url'=>array('/usuario', ''=>'')),
+			//	array('label'=>'Usuarios', 'url'=>array('/usuario', ''=>'')),
 				array('label'=>'Alunos', 'url'=>array('/aluno', ''=>'')),
-							array('label'=>'Equipes', 'url'=>array('/equipe', ''=>'')),
-	array('label'=>'Professores', 'url'=>array('/professor', ''=>'')),
-				array('label'=>'Graphs', 'url'=>array('/site/page', 'view'=>'graphs'),'itemOptions'=>array('class'=>'icon_chart')),
-				array('label'=>'Form', 'url'=>array('/site/page', 'view'=>'forms')),
-				array('label'=>'Interface', 'url'=>array('/site/page', 'view'=>'interface')),				
-				array('label'=>'Buttons & Icons', 'url'=>array('/site/page', 'view'=>'buttons_and_icons')),
-				array('label'=>'Error Pages', 'url'=>array('/site/page', 'view'=>'Demo 404 page')),
+				array('label'=>'Professores', 'url'=>array('/professor', ''=>'')),
+				array('label'=>'Equipes', 'url'=>array('/equipe', ''=>'')),
+			//	array('label'=>'Graphs', 'url'=>array('/site/page', 'view'=>'graphs'),'itemOptions'=>array('class'=>'icon_chart')),
+			//	array('label'=>'Form', 'url'=>array('/site/page', 'view'=>'forms')),
+			//	array('label'=>'Interface', 'url'=>array('/site/page', 'view'=>'interface')),				
+			//	array('label'=>'Buttons & Icons', 'url'=>array('/site/page', 'view'=>'buttons_and_icons')),
+			//	array('label'=>'Error Pages', 'url'=>array('/site/page', 'view'=>'Demo 404 page')), 
 			),
-		)); ?>
+		)); 
+		}
+		?>
 	</div> <!--mainmenu -->
 	<?php if(isset($this->breadcrumbs)):?>
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
@@ -87,4 +91,4 @@
 	<div id="footer">
 		Copyright &copy; <?php echo date('Y'); ?> by webapplicationthemes.com<br/>
 		All Rights Reserved.<br/>
-		<?
+		<? 

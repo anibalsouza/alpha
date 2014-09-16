@@ -8,7 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	
-	'defaultController' => 'site/login',
+	'defaultController' => 'site/index',
 	
 	'name'=>'Alpha Run!',
 	'theme'=>'shadow_dancer',
