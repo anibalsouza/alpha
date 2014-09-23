@@ -31,12 +31,13 @@ class ProfessorController extends Controller
 				'actions'=>array('index','view'),
 				'users'=>array('@'),
 			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+			array('allow', // allow admin user to perform 'create' and 'update' actions
+				'actions'=>array('create','update','admin','delete'),
+				'expression'=>'($user->type == "Admin"||$user->type == "SuperAdmin")',
 				'users'=>array('@'),
 			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+			array('deny', // deny users to perform 'admin' and 'delete' actions
+				'actions'=>array('create','update','admin','delete'),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -71,14 +72,7 @@ class ProfessorController extends Controller
 		{
 			$model->attributes=$_POST['Professor'];
 			$model->user_type=2; 
-//			$model->objetivo="";
-//			$model->historico="";
-//			$model->gaming_level="";
-//			$model->observacoes_medicas;
-//			$model->registro_professor="";
-//			$model->plano_id=0;
-//			$model->status_pagamento="";
-			
+			$model->equipe_id = Yii::app()->user->equipe;			
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -131,7 +125,12 @@ class ProfessorController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Professor');
+		$equipe = Yii::app()->user->equipe;
+		$dataProvider=new CActiveDataProvider('Professor', array(
+    	'criteria'=>array(
+        'condition'=> "equipe_id = $equipe",
+    ),
+    ));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -162,7 +161,8 @@ class ProfessorController extends Controller
 	public function loadModel($id)
 	{
 		$model=Professor::model()->findByPk($id);
-		if($model===null)
+		$equipe = Yii::app()->user->equipe; // Só ve o Prof da propria Equipe
+		if($model===null || $equipe != $model->equipe_id)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}

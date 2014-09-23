@@ -31,12 +31,13 @@ class AlunoController extends Controller
 				'actions'=>array('index','view'),
 				'users'=>array('@'), 
 			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+			array('allow', // allow admin e professor user to perform 'create' and 'update' actions
+				'actions'=>array('create','update','admin','delete'),
+				'expression'=>'($user->type == "SuperAdmin"||$user->type == "Admin"||$user->type == "Professor")',
 				'users'=>array('@'),
 			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+			array('deny', // deny users to perform 'admin' and 'delete' actions
+				'actions'=>array('create','update','admin','delete'),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
@@ -70,7 +71,8 @@ class AlunoController extends Controller
 		if(isset($_POST['Aluno']))
 		{
 			$model->attributes=$_POST['Aluno'];
-
+			$model->equipe_id = Yii::app()->user->equipe;
+			$model->user_type=3; 
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -123,7 +125,12 @@ class AlunoController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Aluno');
+		$equipe = Yii::app()->user->equipe;
+		$dataProvider=new CActiveDataProvider('Aluno', array(
+    	'criteria'=>array(
+        'condition'=> "equipe_id = $equipe",
+    ),
+    ));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -154,7 +161,8 @@ class AlunoController extends Controller
 	public function loadModel($id)
 	{
 		$model=Aluno::model()->findByPk($id);
-		if($model===null)
+		$equipe = Yii::app()->user->equipe; // Só ve o Aluno da propria Equipe
+		if($model===null || $equipe != $model->equipe_id)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}

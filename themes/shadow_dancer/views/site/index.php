@@ -10,8 +10,11 @@
 ?>
 
 <?php $this->pageTitle=Yii::app()->name;
-if (!Yii::app()->user->isGuest) 
-    $nome_conhecido = Usuario::model()->findByPk(Yii::app()->user->id)->nome_conhecido;
+if (!Yii::app()->user->isGuest) {
+//    $usuario = Usuario::model()->findByPk(Yii::app()->user->id);
+    $nome_conhecido = Yii::app()->user->name;
+    $user_type = Yii::app()->user->type;
+    }
 else
     Yii::app()->getRequest()->redirect('/site/login'); 
 ?>

@@ -19,8 +19,8 @@ class Aluno extends Usuario
 	{
 		$parentRules = parent::rules();
 		$myRules = array(
-							array('user_type', 'default', 'value'=>'2'), /* set type to Aluno */
-							array('user_type', 'in', 'range'=>array('2')) /* allow only Aluno type */
+							array('user_type', 'default', 'value'=>'3'), /* set type to Aluno */
+							array('user_type', 'in', 'range'=>array('3')) /* allow only Aluno type */
 							/*array('given_name', 'required') /* new rule for this subtype only */
 						);
 		return array_merge($myRules, $parentRules); 
@@ -62,5 +62,9 @@ class Aluno extends Usuario
  				);
 	}
 	
+	public function userType()
+	{
+		return '';
+	}
 	
 }

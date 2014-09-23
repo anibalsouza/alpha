@@ -27,8 +27,17 @@
 
 <div class="container" id="page"> 
 	<div id="topnav">
-	
-		<div class="topnav_text"><a href='#'>Home</a> | <a href='#'>My Account</a> | <a href='#'>Settings</a> | <a href='<?php echo Yii::app()->request->baseUrl;?>/site/logout'>Logout</a> </div>
+	<?php 
+	if (!Yii::app()->user->isGuest)
+	{
+//	$usuario = Usuario::model()->findByPk(Yii::app()->user->id);
+    $nome_conhecido = Yii::app()->user->name;
+    $user_type = Yii::app()->user->type;
+    $user_id = Yii::app()->user->id;
+	} else
+	$usuario = $nome_conhecido = $user_type = $user_id = null;
+	?>
+		<div class="topnav_text"><a href='<?php echo Yii::app()->request->baseUrl;?>'>Home</a> | <a href='#'>My Account</a> | <a href='<?php echo Yii::app()->request->baseUrl .'/'. $user_type .'/'.$user_id;?>'>Meu Perfil</a> | <a href='<?php echo Yii::app()->request->baseUrl;?>/site/logout'>Sair</a> </div>
 	</div>
 	<div id="header">
 		<div id="logo"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/logo.png"></img><?php //echo CHtml::encode(Yii::app()->name); ?></div>
@@ -69,6 +78,7 @@
 			//	array('label'=>'Usuarios', 'url'=>array('/usuario', ''=>'')),
 				array('label'=>'Alunos', 'url'=>array('/aluno', ''=>'')),
 				array('label'=>'Professores', 'url'=>array('/professor', ''=>'')),
+				array('label'=>'Administradores', 'url'=>array('/admin', ''=>'')),
 				array('label'=>'Equipes', 'url'=>array('/equipe', ''=>'')),
 			//	array('label'=>'Graphs', 'url'=>array('/site/page', 'view'=>'graphs'),'itemOptions'=>array('class'=>'icon_chart')),
 			//	array('label'=>'Form', 'url'=>array('/site/page', 'view'=>'forms')),

@@ -38,18 +38,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'equipe_id'); ?>
-		<?php echo $form->textField($model,'equipe_id'); ?>
-		<?php echo $form->error($model,'equipe_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'user_type'); ?>
-		<?php echo $form->textField($model,'user_type'); ?>
-		<?php echo $form->error($model,'user_type'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'pass'); ?>
 		<?php echo $form->passwordField($model,'pass',array('size'=>16,'maxlength'=>16)); ?>
 		<?php echo $form->error($model,'pass'); ?>

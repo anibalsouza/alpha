@@ -32,8 +32,11 @@ class UserIdentity extends CUserIdentity
             {
     		$this->errorCode=self::ERROR_PASSWORD_INVALID; 
     		}
-        else
+        else //autenticado!
         {    
+            $this->setState('type', $user->userType());
+            $this->setState('equipe', $user->equipe_id);
+            $this->setState('name', $user->nome_conhecido);
             $this->_id=$user->id;
             $this->username=$user->email;
             $this->errorCode=self::ERROR_NONE;

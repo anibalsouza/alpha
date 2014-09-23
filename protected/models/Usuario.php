@@ -113,9 +113,13 @@ class Usuario extends CActiveRecord
 	public function search()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
+		$equipe = Yii::app()->user->equipe;
+
 
 		$criteria=new CDbCriteria;
 
+ 		$criteria->condition="equipe_id = '$equipe'"; //só busca dentro da própria equipe
+ 		
 		$criteria->compare('id',$this->id);
 		$criteria->compare('nome_conhecido',$this->nome_conhecido,true);
 		$criteria->compare('nome_completo',$this->nome_completo,true);
@@ -158,6 +162,26 @@ class Usuario extends CActiveRecord
     {
         return CPasswordHelper::verifyPassword($password,CPasswordHelper::hashPassword($this->pass)); 
     }
-    
+
+ 	public function userType(){
+        switch($this->user_type){
+            case '0':
+                $class='SuperAdmin';
+            break;
+            case '1':
+                $class='Admin';
+            break;
+            case '2':
+                $class='Professor';
+            break;
+            case '3':
+                $class='Aluno';
+            break;
+            default:
+ 				$class='Usuario';
+ 			break;
+        }
+        return $class;
+        }    
 
 }

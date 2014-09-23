@@ -23,7 +23,7 @@ class Professor extends Usuario
 							array('user_type', 'in', 'range'=>array('2')) /* allow only Professor type */
 							/*array('given_name', 'required') /* new rule for this subtype only */
 						);
-		return array_merge($myRules, $parentRules); 
+		return array_merge($myRules, $parentRules);
 	}
 
 	/**
@@ -62,5 +62,9 @@ class Professor extends Usuario
  				);
 	}
 	
+	public function userType()
+	{
+		return 'A';
+	}
 	
 }
