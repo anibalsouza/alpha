@@ -1,0 +1,60 @@
+##############################################################################################################
+Minhas Referencias
+--------------------------------------------------------------------------------------------------------------
+trainer.active.com
+teamer.net
+www.teamsnap.com
+
+
+##############################################################################################################
+Inicialização do Projeto
+--------------------------------------------------------------------------------------------------------------
+Novo projeto Alpha (cloud9 - https://ide.c9.io/anibalsouza/alpha)
+Incializa vazio e git vazio (git@github.com:anibalsouza/alpha.git)
+Clone Yii 1.1.15
+Cria novo App em root (/home/ubuntu/workspace)
+Push de toda a pasta para o Git (que envia automaticamente para o Azure)
+Azure configurado como free com a base free tb.(alpha-1.azurewebsites.net)
+DB do Azure: alphayDB @ br-cdbr-azure-south-a.cloudapp.net
+importada a pasta shadow_dancer para a pasta themes
+
+##############################################################################################################
+Configuração do Yii
+--------------------------------------------------------------------------------------------------------------
+COnfiguração inicial conforme http://www.larryullman.com/2009/11/03/configuring-yii/
+Banco de dados utilizado: alphayDB conforme documento de banco de dados
+*defaultControler => login para ser adicionado futuramente (linha 11)
+*'theme'=>'shadow_dancer'(linha 14) 
+*application array conforme http://www.webapplicationthemes.com/shadow-dancer-yii-framework-theme/
+
+-> Push  para o Azure com sucesso! (na 3a tentativa por conta do timeout)
+
+##############################################################################################################
+Construindo as tabelas da Base de Dados inicial do Projeto e respectivos MVC
+--------------------------------------------------------------------------------------------------------------
+1o - Tabelas de Papéis, Usuário, Aluno e Professor
+ -> Gerando Modelos
+ -> Gerando CRUD
+##############################################################################################################
+Alterei o index do Professor/Aluno para, na criação, chamar usuario primeiro. é chamado o usuario com $_GET que especifica o tipo de usuario (professor, aluno, etc). 
+--------------------------------------------------------------------------------------------------------------
+##############################################################################################################
+Caso de Uso para testes e desenvolvimento.
+- Duas Equipes:
+    -Equipe A
+        -1 Professor Admin: - Armando Admilson
+        -2 Professor Associado: - Antonio Profeta e Aloizio Profeta
+        -3 Alunos: Andre Alonzo, Alex Alonzo e Anderson Alonzo
+        
+    -Equipe B
+        -1 Professor Admin: - Bernardo Admilson
+        -2 Professor Associado: - Baltazar Profeta e Benedito Profeta
+        -3 Alunos: Bruno Alonzo, Bia Alonzo e Beto Alonzo
+
+- Equipe A só vê Equipe A e Equipe B só vê Equipe B; Implementado através de Funções Index e Load Model do controler do proprio modelo a ser visualizado.
+- Professor Admin gerencia Professores e Alunos; Implementado através de Access Rules do controler do proprio modelo a ser gerenciado.
+- Professor Associado gerencia Alunos; Implementado através de Access Rules do controler do proprio modelo a ser gerenciado.
+    * gerenciar =ver criar edita e excluir
+- Aluno vê alunos e professores; Implementado através de: Access Rules do controler do proprio modelo a ser gerenciado.
+##############################################################################################################
+
