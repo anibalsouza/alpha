@@ -1,0 +1,18 @@
+// Oregon US West
+
+$hostname = alphadb.ccpdawycehrd.us-west-2.rds.amazonaws.com;
+$dbname = AlphaDB;
+$password = an987kjhg$5%6*;
+$username = AlphaUSER_45;
+
+// Sao Paulo
+
+$hostname = alphaspdb.ckbsvwjngqgs.sa-east-1.rds.amazonaws.com;
+$dbname = AlphaSpDb;
+$password = an987kjhg$5%6*;
+$username = AlphaUSER_45;
+
+
+Comando que falhou:
+
+CREATE UNIQUE INDEX site_emails_content_name_UNIQUE ON site_emails_content (UPPER(name)); // Funcionou alterando o comando...

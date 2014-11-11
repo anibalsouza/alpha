@@ -1,0 +1,72 @@
+body { 
+   margin: 0px; 
+   color : #333; 
+   background-color : #FFF; 
+   font-size : 11px; 
+   font-family : Arial, Helvetica, sans-serif; 
+}
+
+form { 
+   margin: 0px; 
+}
+
+input { 
+   border: 1px solid #cccccc; 
+}
+
+table {
+   border-collapse:collapse;
+}
+
+.td1 { 
+   border: 1px solid #cccccc; 
+   padding:3px; 
+   align=left;
+}
+ 
+.th1 {
+   border: 1px solid #cccccc; 
+   padding:5px; 
+   font-weight : bold;
+} 
+
+.text {
+   font-size : 11px; 
+   font-family : Arial, Helvetica, sans-serif; 
+   font-weight : bold; 
+}
+
+.text2 {
+   text-align:right; 
+   font-size : 10px; 
+   font-family : Arial, Helvetica, sans-serif; 
+   color : #aaaaaa;
+}
+
+.ctr {
+   text-align: center; 
+}
+
+.login {
+   margin-left: auto; 
+   margin-right: auto; 
+   margin-top: 6em;	
+   padding: 15px;	
+   border: 1px solid #cccccc;	
+   width: 450px; 
+   background: #F1F3F5;
+}
+
+.lform {
+   width: 100%; 
+   text-align:center; 
+}
+
+.fblock {
+   border: 1px solid #cccccc;
+   background: #E9ECEF;
+   padding-top: 15px;
+   padding-left: 10px;
+   padding-bottom: 10px;
+   padding-right: 10px; 
+}
