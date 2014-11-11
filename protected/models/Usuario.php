@@ -163,6 +163,21 @@ class Usuario extends CActiveRecord
         return CPasswordHelper::verifyPassword($password,CPasswordHelper::hashPassword($this->pass)); 
     }
 
+	public function defaultScope()
+	{
+	/* only read Usuarios that are Equipe */
+
+	if (Yii::app()->user->isGuest)
+		return array();
+	else {
+		$equipe = Yii::app()->user->equipe;
+		return array(
+				'condition'=>"equipe_id='$equipe'"
+ 				);
+		}
+
+	}
+
  	public function userType(){
         switch($this->user_type){
             case '0':
@@ -183,5 +198,16 @@ class Usuario extends CActiveRecord
         }
         return $class;
         }    
+
+	public function getFullName() {
+    	return $this->nome_completo;
+	}
+
+	public function getSuggest($q) {
+		$c = new CDbCriteria();
+		$c->addSearchCondition('nome_completo', $q, true, 'OR');
+		$c->addSearchCondition('email', $q, true, 'OR');
+		return $this->findAll($c);
+	}
 
 }

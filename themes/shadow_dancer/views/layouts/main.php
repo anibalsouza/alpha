@@ -32,7 +32,7 @@
 	{
 //	$usuario = Usuario::model()->findByPk(Yii::app()->user->id);
     $nome_conhecido = Yii::app()->user->name;
-    $user_type = Yii::app()->user->type;
+    $user_type = 0; //Yii::app()->user->type;
     $user_id = Yii::app()->user->id;
 	} else
 	$usuario = $nome_conhecido = $user_type = $user_id = null;
@@ -80,7 +80,18 @@
 				array('label'=>'Professores', 'url'=>array('/professor', ''=>'')),
 				array('label'=>'Administradores', 'url'=>array('/admin', ''=>'')),
 				array('label'=>'Equipes', 'url'=>array('/equipe', ''=>'')),
-			//	array('label'=>'Graphs', 'url'=>array('/site/page', 'view'=>'graphs'),'itemOptions'=>array('class'=>'icon_chart')),
+				array('label'=>'Mensagens', 'url'=>array('/message', ''=>'')),
+				array('label'=>'Mensagens 2', 'url'=>array('/mailbox', ''=>'')),
+				array('label'=>'Noticias', 'url'=>array('/mailbox/', ''=>'')),
+			
+			//Botoes do BUM	
+				array('label'=>'Install', 'url'=>array('/bum/install'), 'visible'=>Yii::app()->getModule('bum')->install),
+        		array('label'=>'My Profile', 'url'=>array('/bum/users/viewProfile', 'id'=>Yii::app()->user->id), 'visible'=>!Yii::app()->user->isGuest),
+        		array('label'=>'Login', 'url'=>array('/bum/users/login'), 'visible'=>Yii::app()->user->isGuest),
+        		array('label'=>'SingUp', 'url'=>array('/bum/users/signUp'), 'visible'=>Yii::app()->user->isGuest),
+        		array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
+				
+				//	array('label'=>'Graphs', 'url'=>array('/site/page', 'view'=>'graphs'),'itemOptions'=>array('class'=>'icon_chart')),
 			//	array('label'=>'Form', 'url'=>array('/site/page', 'view'=>'forms')),
 			//	array('label'=>'Interface', 'url'=>array('/site/page', 'view'=>'interface')),				
 			//	array('label'=>'Buttons & Icons', 'url'=>array('/site/page', 'view'=>'buttons_and_icons')),

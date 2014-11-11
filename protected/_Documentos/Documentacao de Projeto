@@ -32,9 +32,12 @@ Banco de dados utilizado: alphayDB conforme documento de banco de dados
 ##############################################################################################################
 Construindo as tabelas da Base de Dados inicial do Projeto e respectivos MVC
 --------------------------------------------------------------------------------------------------------------
-1o - Tabelas de Papéis, Usuário, Aluno e Professor
+1o - Tabelas de Usuário e Equipe
  -> Gerando Modelos
  -> Gerando CRUD
+ 
+2o - Gerar Controles para Single Table Inheritance
+ -> Modelos Aluno, Admin e Professor
 ##############################################################################################################
 Alterei o index do Professor/Aluno para, na criação, chamar usuario primeiro. é chamado o usuario com $_GET que especifica o tipo de usuario (professor, aluno, etc). 
 --------------------------------------------------------------------------------------------------------------
@@ -56,5 +59,19 @@ Caso de Uso para testes e desenvolvimento.
 - Professor Associado gerencia Alunos; Implementado através de Access Rules do controler do proprio modelo a ser gerenciado.
     * gerenciar =ver criar edita e excluir
 - Aluno vê alunos e professores; Implementado através de: Access Rules do controler do proprio modelo a ser gerenciado.
+--------------------------------------------------------------------------------------------------------------
 ##############################################################################################################
-
+Sistema de Mensagens
+- Usuários mandam mensagem para a respectiva equipe apenas. 
+--------------------------------------------------------------------------------------------------------------
+##############################################################################################################
+Sistema de emails
+- Funcionando o modulo de email. 
+--------------------------------------------------------------------------------------------------------------
+##############################################################################################################
+Em 07/11/14, Backup em /home/ubuntu/alphab
+    -> $ cp -avr workspace alphab
+    Verificado por:
+    -> diff -r -q workspace alphab/workspace
+--------------------------------------------------------------------------------------------------------------
+##############################################################################################################

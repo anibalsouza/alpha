@@ -19,12 +19,30 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+		'ext.mail.YiiMailMessage',
+		'application.modules.bum.models.*',
+    	'application.modules.bum.components.*',
 	),
 
 	'modules'=>array(
-		// uncomment the following to enable the Gii tool
+		'message' => array(
+			'userModel' => 'Usuario',
+			'getNameMethod' => 'getFullName',
+			'getSuggestMethod' => 'getSuggest',
+			),	
+			
+		'mailbox'=> array(  
+    		'userClass' => 'Usuario',
+    		'userIdColumn' => 'id',
+    		'usernameColumn' =>  'nome_completo'
+    		),
+    	'bum'=>array(
+    		'install' => false,
+    		),
 		
-		/*'gii'=>array(
+		
+		
+		/*'gii'=>array( // uncomment the following to enable the Gii tool
 			'class'=>'system.gii.GiiModule',
 			'password'=>'Enter Your Password H',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
@@ -35,12 +53,34 @@ return array(
 
 	// application components
 	'components'=>array(
+		'mail' => array(
+    		'class' => 'ext.mail.YiiMail',
+    		'transportType' => 'smtp',
+		    'transportOptions' => array(
+		        'host' => 'smtp.gmail.com',
+		        'username' => 'contato.alpharun@gmail.com',
+		        'password' => 'Alpha010203',
+		        'port' => '465',
+		        'encryption'=>'ssl',
+				 ),
+		    'viewPath' => 'bum.views.mail',
+		    'logging' => false,
+		    'dryRun' => false
+			),
+
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
-		),
+			'class' => 'BumWebUser',
+        	'loginUrl' => array('//bum/users/login'), // required
+        ),
 		
-		  'widgetFactory'=>array(
+		'authManager'=>array(
+        	'class'=>'CDbAuthManager',
+        	'connectionID'=>'db',
+        	),
+		
+		'widgetFactory'=>array(
             'widgets'=>array(
                 'CGridView'=>array(
                     'htmlOptions'=>array('cellspacing'=>'0','cellpadding'=>'0'),
@@ -93,11 +133,12 @@ return array(
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(
-			'connectionString' => 'mysql:host=br-cdbr-azure-south-a.cloudapp.net;dbname=alphayDB',
+			'connectionString' => 'mysql:host=alphadb.ccpdawycehrd.us-west-2.rds.amazonaws.com;dbname=AlphaDB',
 			'emulatePrepare' => true,
-			'username' => 'bbc3af3243c6e0',
-			'password' => '4fb8cadb',
+			'username' => 'AlphaUSER_45',
+			'password' => 'an987kjhg$5%6*',
 			'charset' => 'utf8',
+			'tablePrefix' => '',
 		),
 		
 		'errorHandler'=>array(

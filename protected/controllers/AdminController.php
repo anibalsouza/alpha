@@ -137,7 +137,7 @@ class AdminController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$equipe = Yii::app()->user->equipe;
+		$equipe = 1;//Yii::app()->user->equipe;
 		$dataProvider=new CActiveDataProvider('Admin', array(
     	'criteria'=>array(
         'condition'=> "equipe_id = $equipe",

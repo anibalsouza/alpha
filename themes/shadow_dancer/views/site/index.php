@@ -13,10 +13,21 @@
 if (!Yii::app()->user->isGuest) {
 //    $usuario = Usuario::model()->findByPk(Yii::app()->user->id);
     $nome_conhecido = Yii::app()->user->name;
-    $user_type = Yii::app()->user->type;
+    $user_type = 0; //Yii::app()->user->type;
     }
 else
     Yii::app()->getRequest()->redirect('/site/login'); 
+?>
+
+<?php
+
+/* $message = new YiiMailMessage;
+ $message->setBody('Message content here with HTML', 'text/html');
+ $message->subject = 'My Subject4';
+ $message->addTo('anibal.souza@gmail.com');
+ $message->from = Yii::app()->params['adminEmail'];
+ Yii::app()->mail->send($message);
+*/
 ?>
 
 <h1>Dear <?php echo $nome_conhecido; ?> welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i> Dashboard</h1>
